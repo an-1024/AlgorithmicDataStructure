@@ -1,0 +1,33 @@
+@startuml
+title 循环矩阵
+start
+:确定循环周期规律 cycle = n/2, 例如 n=2循环一圈，n=3同样循环一圈
+n=4循环2圈，n=5循环两圈以次举例得出规律;
+while (cycle--)
+    while (j=starty; j<starty+n-offset; j++)
+        : nums[startx][j] = count++(count最小值为1)
+        模拟上层从左到有填充;
+    endwhile
+    while (i=startx; i<startx+n-offset; i++)
+        : nums[i][starty] = count++
+        模拟右边从上到下填充;
+    endwhile
+    while (; j>starty; j--)
+        : nums[i][j] = count++
+        模拟下层从右到左填充;
+    endwhile
+    while (; i>startx; i--)
+        : nums[i][j] = count++
+        模拟左边从下到上填充;
+    endwhile
+    : 一圈循环填充完成，开始下一轮，起始位置发生改变
+    startx++
+    starty++;
+    : 偏移量同样要增加, 从而控制每层循环长度，每一轮循环完成，上下左右都已经填充
+    所以 offset += 2，初始值当然为1，因为每层不需要循环到最后一个下标;
+    if (n % 2) then (yes)
+        : 表明 n 为奇数 nums[mid = n/2][mid = n/2] = (mid = n/2) * (mid = n/2);
+    endif
+endwhile
+: return nums ;
+@enduml

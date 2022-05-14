@@ -1,0 +1,17 @@
+@startuml
+title 移除元素-暴力解法
+start
+while (索引 index < 数组长度)
+    if (目标值 == nums[index]) then (yes)
+        while (索引 index2 < 数组长度))
+            : 数组元素向前移动一位 nums[index2 - 1] = nums[index2];
+        endwhile
+        : index-- 因为index以后的元素都向前移动了一位，所以 index 也要向前移动一位;
+        : 因为数组其中一位元素被覆盖了，所以数组长度要减一 ;
+    endif
+endwhile
+: 返回数组大小 ;
+stop
+
+
+@enduml

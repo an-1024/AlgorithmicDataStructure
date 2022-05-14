@@ -1,0 +1,21 @@
+@startuml
+title 寻找数组中长度最小的子数组
+
+start
+while (索引区间  i < 数组索引长度 nums.length) is (yes)
+    : 初始化数组中元素相加之和 sum = 0;
+    while (j=i; 索引 j < 数组长度 nums.length) is (yes)
+    :  计算元素之和 sum += nums[j];
+        if (sum >= target) then (yes)
+            : 计算子数组的长度 subLength = j-i+1;
+            if (最终长度结果 是否大于 上一次的 result) then （(yes)
+                : result = result;
+            else (no)
+                : result = subLength;
+            endif
+        endif
+    break
+    endwhile
+endwhile
+end
+@enduml

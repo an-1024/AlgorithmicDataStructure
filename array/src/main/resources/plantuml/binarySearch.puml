@@ -1,0 +1,16 @@
+@startuml
+title binarySearch(二分查找 左闭右闭)
+start
+while (左区间索引 left <= 右区间索引 right ?) is (yes)
+    : middle = left + ((right - left)/2) 防止位溢出;
+    if (target == nums[middle]) then (yes)
+        : return middle;
+    elseif (target < nums[middle]) then (yes)
+        : right = middle -1;
+    else (no)
+        : left = middle + 1;
+    endif
+endwhile (no)
+    : return -1;
+stop
+@enduml
