@@ -7,8 +7,11 @@ public class Solution {
         virtualNode.next = head;
         ListNode currNode = head;
         while(currNode.next != null){
-            if(currNode.val == val){
+            if(currNode.next.val == val){
+                virtualNode.next = currNode.next.next;
 
+            }else {
+                currNode = currNode.next;
             }
         }
         return head;
