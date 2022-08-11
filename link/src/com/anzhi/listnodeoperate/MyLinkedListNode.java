@@ -25,6 +25,11 @@ public class MyLinkedListNode {
         this.next = next;
     }
 
+    /**
+     * 插入链表节点-头插法
+     *
+     * @param val
+     */
     public void addAtHead(int val) {
         // 创建一个插入的节点
         MyLinkedListNode insertNode = new MyLinkedListNode(val);
@@ -32,5 +37,34 @@ public class MyLinkedListNode {
         insertNode.next = virtualNode.next;
         virtualNode.next = insertNode;
         nodeLength++;
+    }
+
+
+    /**
+     * 插入链表节点-尾插法
+     *
+     * @param var
+     */
+    public void addAtTail(int var){
+        // 创建一个插入的节点
+        MyLinkedListNode insertNode = new MyLinkedListNode(val);
+        while (virtualNode.next != null){
+            virtualNode = virtualNode.next;
+        }
+        virtualNode.next = insertNode;
+    }
+
+    /**
+     * 插入指定位置节点
+     *
+     * @param index
+     * @param val
+     */
+    public void addAtIndex(int index, int val) {
+        // 创建新的节点
+        MyLinkedListNode insertNode = new MyLinkedListNode(val);
+        for(int i=0; i<index; i++){
+
+        }
     }
 }
