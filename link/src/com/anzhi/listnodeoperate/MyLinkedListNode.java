@@ -1,28 +1,13 @@
 package com.anzhi.listnodeoperate;
 
+import com.anzhi.removenode.ListNode;
+
 public class MyLinkedListNode {
-    // 数据域
-    public int val;
-    // 下一个指针域
-    public MyLinkedListNode next;
 
-    // 链表长度
-    public static int nodeLength = 0;
-
-    // 初始化一个虚拟头节点
-    public static MyLinkedListNode virtualNode = null;
+    public LinkedNode virtualNode;
 
     public MyLinkedListNode() {
-        virtualNode = new MyLinkedListNode(0);
-    }
-
-    public MyLinkedListNode(int val) {
-        this.val = val;
-    }
-
-    public MyLinkedListNode(int val, MyLinkedListNode next) {
-        this.val = val;
-        this.next = next;
+         virtualNode = new LinkedNode(0);
     }
 
     /**
@@ -32,26 +17,26 @@ public class MyLinkedListNode {
      */
     public void addAtHead(int val) {
         // 创建一个插入的节点
-        MyLinkedListNode insertNode = new MyLinkedListNode(val);
+        LinkedNode insertNode = new LinkedNode(val);
         // 插入节点的下一个指针域指向虚拟节点的下一个指针域
         insertNode.next = virtualNode.next;
         virtualNode.next = insertNode;
-        nodeLength++;
     }
 
 
     /**
      * 插入链表节点-尾插法
      *
-     * @param var
+     * @param val
      */
-    public void addAtTail(int var){
+    public void addAtTail(int val){
         // 创建一个插入的节点
-        MyLinkedListNode insertNode = new MyLinkedListNode(val);
-        while (virtualNode.next != null){
-            virtualNode = virtualNode.next;
+        LinkedNode insertNode = new LinkedNode(val);
+        LinkedNode currNode = virtualNode;
+        while (currNode.next != null){
+            currNode = currNode.next;
         }
-        virtualNode.next = insertNode;
+        currNode.next = insertNode;
     }
 
     /**
@@ -61,10 +46,70 @@ public class MyLinkedListNode {
      * @param val
      */
     public void addAtIndex(int index, int val) {
-        // 创建新的节点
-        MyLinkedListNode insertNode = new MyLinkedListNode(val);
-        for(int i=0; i<index; i++){
-
+        if(index > getNodeLength() || index < 0){
+            return;
         }
+        // 创建新的节点
+        LinkedNode insertNode = new LinkedNode(val);
+        LinkedNode currNode = virtualNode;
+        for(int i=0; i<index; i++){
+            currNode = currNode.next;
+        }
+        insertNode.next = currNode.next;
+        currNode.next = insertNode;
+    }
+
+    /**
+     * 删除第 index 个节点
+     *
+     * @param index
+     */
+    public void deleteAtIndex(int index) {
+        if(index > getNodeLength() || index < 0){
+            return;
+        }
+
+        LinkedNode currNode = virtualNode;
+        for(int i=0; i<index; i++){
+            currNode = currNode.next;
+        }
+        // 记录删除节点的下一个节点
+        currNode.next = currNode.next.next;
+    }
+
+    /**
+     * 获取某个节点
+     *
+     * @param index
+     * @return
+     */
+    public int get(int index) {
+        if(index > getNodeLength() || index < 0){
+            return -1;
+        }
+
+        LinkedNode currNode = virtualNode;
+        for(int i=0; i<index; i++){
+            currNode = currNode.next;
+        }
+        return currNode.val;
+    }
+
+    public void printMyLinkedListNode(){
+        LinkedNode currNode = virtualNode;
+        while(currNode.next != null){
+            System.out.println("MyLinkedListNode current value= " + currNode.next.val);
+            currNode = currNode.next;
+        }
+    }
+
+    public int getNodeLength(){
+        int length = 0;
+        LinkedNode currNode = virtualNode;
+        while(currNode.next != null){
+            length++;
+            currNode = currNode.next;
+        }
+        return length;
     }
 }
