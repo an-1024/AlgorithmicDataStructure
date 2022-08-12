@@ -1,7 +1,5 @@
 package com.anzhi.listnodeoperate;
 
-import com.anzhi.removenode.ListNode;
-
 public class MyLinkedListNode {
 
     public LinkedNode virtualNode;
@@ -46,7 +44,7 @@ public class MyLinkedListNode {
      * @param val
      */
     public void addAtIndex(int index, int val) {
-        if(index > getNodeLength() || index < 0){
+        if(index < 0){
             return;
         }
         // 创建新的节点
@@ -65,7 +63,8 @@ public class MyLinkedListNode {
      * @param index
      */
     public void deleteAtIndex(int index) {
-        if(index > getNodeLength() || index < 0){
+        // 当 index = 实际长度, 表明删除节点不存在
+        if(index >= getNodeLength() || index < 0){
             return;
         }
 
@@ -84,15 +83,15 @@ public class MyLinkedListNode {
      * @return
      */
     public int get(int index) {
-        if(index > getNodeLength() || index < 0){
+        // 当 index = 实际长度, 表明获取节点不存在
+        if(index >= getNodeLength() || index < 0){
             return -1;
         }
-
         LinkedNode currNode = virtualNode;
         for(int i=0; i<index; i++){
             currNode = currNode.next;
         }
-        return currNode.val;
+        return currNode.next.val;
     }
 
     public void printMyLinkedListNode(){
