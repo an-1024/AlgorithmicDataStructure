@@ -5,7 +5,8 @@ public class MyLinkedListNodeDemo {
     // [[],           [4],         [1],[1],[5],[3],[7],[3],[3],[3],[1],[4]]
     public static void main(String[] args) {
         MyLinkedListNode myLinkedListNode = new MyLinkedListNode();
-        myLinkedListNode.addAtHead(4);
-        System.out.println(myLinkedListNode.get(1));
+        myLinkedListNode.addAtHead(1);
+        myLinkedListNode.addAtTail(3);
+        myLinkedListNode.addAtIndex(0, 2);
     }
 }

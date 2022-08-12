@@ -44,7 +44,8 @@ public class MyLinkedListNode {
      * @param val
      */
     public void addAtIndex(int index, int val) {
-        if(index < 0){
+        //如果 index 等于链表的长度，则该节点将附加到链表的末尾。如果 index 大于链表长度，则不会插入节点。如果index小于0，则在头部插入节点。
+        if(index > getNodeLength() || index < 0){
             return;
         }
         // 创建新的节点
