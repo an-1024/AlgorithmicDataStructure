@@ -4,6 +4,7 @@ public class MyLinkedListNode {
 
     public LinkedNode virtualNode;
 
+    // 为虚拟节点赋值
     public MyLinkedListNode() {
          virtualNode = new LinkedNode(0);
     }
@@ -95,6 +96,9 @@ public class MyLinkedListNode {
         return currNode.next.val;
     }
 
+    /**
+     *  打印链表
+     */
     public void printMyLinkedListNode(){
         LinkedNode currNode = virtualNode;
         while(currNode.next != null){
@@ -103,6 +107,11 @@ public class MyLinkedListNode {
         }
     }
 
+    /**
+     * 获取链表长度
+     *
+     * @return
+     */
     public int getNodeLength(){
         int length = 0;
         LinkedNode currNode = virtualNode;
@@ -111,5 +120,31 @@ public class MyLinkedListNode {
             currNode = currNode.next;
         }
         return length;
+    }
+
+    /**
+     * 反转链表
+     *
+     * @param head
+     * @return
+     */
+    public LinkedNode reverseListNode(LinkedNode head){
+        // 创建临时节点保存剩余链表
+        LinkedNode tmp;
+        LinkedNode currNode = head; // 当前节点指向头节点
+        LinkedNode pre = null; // 前置指针为null
+
+        while(currNode != null){
+            // 首先保存下一个节点的链
+            tmp = currNode.next;
+            // 开始断链, 并反转
+            currNode.next = pre;
+            // 前置指针等于断链的节点
+            pre = currNode;
+            // 当前节点重新赋值断链
+            currNode = tmp;
+        }
+        virtualNode.next = pre;
+        return virtualNode;
     }
 }
