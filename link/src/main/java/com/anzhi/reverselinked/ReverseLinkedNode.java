@@ -11,7 +11,7 @@ public class ReverseLinkedNode {
         for(int i=1; i<7; i++){
             myLinkedListNode.addAtTail(i);
         }
-
+        myLinkedListNode.printMyLinkedListNode();
         myLinkedListNode.reverseListNode(myLinkedListNode.virtualNode.next);
         myLinkedListNode.printMyLinkedListNode();
     }

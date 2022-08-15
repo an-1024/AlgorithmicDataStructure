@@ -133,18 +133,19 @@ public class MyLinkedListNode {
     public LinkedNode reverseListNode(LinkedNode head){
         // 创建临时节点保存剩余链表
         LinkedNode tmp;
-        LinkedNode currNode = head; // 当前节点指向头节点
+        virtualNode.next  = head; // 当前节点指向头节点
         LinkedNode pre = null; // 前置指针为null
+        LinkedNode currNode = virtualNode;
 
-        while(currNode != null){
+        while(currNode.next != null){
             // 首先保存下一个节点的链
-            tmp = currNode.next;
+            tmp = currNode.next.next;
             // 开始断链, 并反转
-            currNode.next = pre;
+            currNode.next.next = pre;
             // 前置指针等于断链的节点
-            pre = currNode;
+            pre = currNode.next;
             // 当前节点重新赋值断链
-            currNode = tmp;
+            currNode.next = tmp;
         }
         virtualNode.next = pre;
         return virtualNode;
@@ -157,7 +158,7 @@ public class MyLinkedListNode {
      * @return
      */
     public LinkedNode swapPairs(LinkedNode head) {
-        // 虚拟头节点指向实际头节点(方便操作)
+        // 虚拟头节点指向实际头节点(方便操作: 节省了奇偶数判断代码, 统一操作)
         virtualNode.next = head;
         // 创建当前节点指向
         LinkedNode currNode = virtualNode;
