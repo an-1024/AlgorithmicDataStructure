@@ -1,5 +1,7 @@
 package com.anzhi.listnodeoperate;
 
+import com.anzhi.removenode.ListNode;
+
 public class MyLinkedListNode {
 
     public LinkedNode virtualNode;
@@ -146,5 +148,22 @@ public class MyLinkedListNode {
         }
         virtualNode.next = pre;
         return virtualNode;
+    }
+
+    /**
+     * 交换链表相邻节点
+     *
+     * @param head
+     * @return
+     */
+    public LinkedNode swapPairs(LinkedNode head) {
+        LinkedNode currNode = head;
+
+        while(currNode != null && currNode.next != null){
+            LinkedNode tmp = currNode;
+            LinkedNode tmp2 = currNode.next; // 记录第二个临时节点
+
+            currNode.next.next = currNode.next;
+        }
     }
 }
