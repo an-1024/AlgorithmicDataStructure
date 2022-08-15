@@ -151,19 +151,28 @@ public class MyLinkedListNode {
     }
 
     /**
-     * 交换链表相邻节点
+     * 两两交换链表中的节点
      *
      * @param head
      * @return
      */
     public LinkedNode swapPairs(LinkedNode head) {
-        LinkedNode currNode = head;
+        // 虚拟头节点指向实际头节点(方便操作)
+        virtualNode.next = head;
+        // 创建当前节点指向
+        LinkedNode currNode = virtualNode;
 
-        while(currNode != null && currNode.next != null){
-            LinkedNode tmp = currNode;
-            LinkedNode tmp2 = currNode.next; // 记录第二个临时节点
+        while(currNode.next != null && currNode.next.next != null){
+            LinkedNode tmp = currNode.next; // 保存相邻第一个链表节点
+            LinkedNode tmp2 = currNode.next.next.next; // 记录不相邻第一个临时节点
 
-            currNode.next.next = currNode.next;
+            currNode.next = currNode.next.next; // 相邻第一个节点指向与之不相邻的第一个节点
+            currNode.next.next = tmp; // 断开相邻第一个节点链表
+            currNode.next.next.next = tmp2; // 断开相邻第二个链表
+
+            currNode = currNode.next.next; // 移动两位
         }
+
+        return virtualNode.next;
     }
 }
