@@ -4,7 +4,7 @@ import java.util.Arrays;
 
 /**
  * LeetCode: 59: https://leetcode-cn.com/problems/spiral-matrix-ii
- * 给你一个正整数 n，生成一个包含 1 到 n^2 所有元素， 且元素按顺时针螺旋排列的 n x n 正方形举证 matrix
+ * 给你一个正整数 n，生成一个包含 1 到 n^2 所有元素， 且元素按顺时针螺旋排列的 n x n 正方形矩阵 matrix
  */
 public class SpiralMatrixII {
     public static void main(String[] args) {
