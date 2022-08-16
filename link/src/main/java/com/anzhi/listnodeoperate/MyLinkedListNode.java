@@ -176,4 +176,17 @@ public class MyLinkedListNode {
 
         return virtualNode.next;
     }
+
+    /**
+     * 删除链表倒数第 n 个节点
+     *
+     * @param head
+     * @param n
+     * @return
+     */
+    public LinkedNode removeNthFromEnd(LinkedNode head, int n) {
+
+
+        return virtualNode.next;
+    }
 }
