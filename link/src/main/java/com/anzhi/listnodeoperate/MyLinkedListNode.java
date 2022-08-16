@@ -81,7 +81,7 @@ public class MyLinkedListNode {
     }
 
     /**
-     * 获取某个节点
+     * 获取某个节点的值
      *
      * @param index
      * @return
@@ -96,6 +96,18 @@ public class MyLinkedListNode {
             currNode = currNode.next;
         }
         return currNode.next.val;
+    }
+
+    public LinkedNode getNode(int index) {
+        // 当 index = 实际长度, 表明获取节点不存在
+        if(index >= getNodeLength() || index < 0){
+            return null;
+        }
+        LinkedNode currNode = virtualNode;
+        for(int i=0; i<index; i++){
+            currNode = currNode.next;
+        }
+        return currNode.next;
     }
 
     /**
@@ -203,5 +215,42 @@ public class MyLinkedListNode {
 
         slow.next = slow.next.next;
         return virtualNode.next;
+    }
+
+    /**
+     * 判断链表是否有环
+     *
+     * @param head
+     * @return
+     */
+    public LinkedNode detectCycle(LinkedNode head) {
+        // 同样设置快慢指针，快指针从相遇节点出发，慢指针每次移动一个个节点
+        // 只要链表有环，最终 slow =  fast
+        virtualNode.next = head;
+        LinkedNode slow = virtualNode;
+        LinkedNode fast = virtualNode;
+
+        while(fast.next!= null && fast.next.next != null){
+            // fast 指针先移动一步
+            fast = fast.next.next;
+            slow = slow.next;
+            // 如果 slow = fast 表明该链表有环
+            if(slow == fast){
+                // 开始寻找环的入口
+                // 定义相遇节点
+                LinkedNode contactNode = fast;
+                // 定义节点重新指向头节点
+                LinkedNode headNode = virtualNode.next;
+                // 当两个节点再次相遇的时候一定是入口节点
+                while (contactNode != headNode){
+                    contactNode = contactNode.next;
+                    headNode = head.next;
+                }
+                virtualNode.next = headNode;
+                return virtualNode;
+            }
+        }
+        virtualNode.next = null;
+        return virtualNode;
     }
 }
