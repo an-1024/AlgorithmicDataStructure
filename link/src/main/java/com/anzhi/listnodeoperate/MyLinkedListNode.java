@@ -185,8 +185,23 @@ public class MyLinkedListNode {
      * @return
      */
     public LinkedNode removeNthFromEnd(LinkedNode head, int n) {
+        // 虚拟头节点指向头节点
+        virtualNode.next = head;
+        // 创建慢指针
+        LinkedNode slow = virtualNode;
+        // 创建快指针
+        LinkedNode fast = virtualNode;
+        while( n-- >= 0 && fast != null){
+            fast = fast.next;
+        }
 
+        // fast 指针再提前移动一步,因为需要让 slow 指向删除节点的上一个节点
+        while (fast != null){
+            fast = fast.next;
+            slow = slow.next;
+        }
 
+        slow.next = slow.next.next;
         return virtualNode.next;
     }
 }
