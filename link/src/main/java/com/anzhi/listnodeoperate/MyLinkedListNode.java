@@ -252,4 +252,24 @@ public class MyLinkedListNode {
         virtualNode.next = null;
         return virtualNode;
     }
+
+    /**
+     * 链表相交
+     *
+     * @param headA
+     * @param headB
+     * @return
+     */
+    public ListNode getIntersectionNode(LinkedNode headA, LinkedNode headB) {
+        LinkedNode currNodeA = headA;
+        LinkedNode currNodeB = headB;
+
+        int length
+
+        // 计算两个链表的长度
+        while(currNodeA != null){
+
+        }
+        return
+    }
 }
