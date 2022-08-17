@@ -226,11 +226,10 @@ public class MyLinkedListNode {
     public LinkedNode detectCycle(LinkedNode head) {
         // 同样设置快慢指针，快指针从相遇节点出发，慢指针每次移动一个个节点
         // 只要链表有环，最终 slow =  fast
-        virtualNode.next = head;
-        LinkedNode slow = virtualNode;
-        LinkedNode fast = virtualNode;
+        LinkedNode slow = head;
+        LinkedNode fast = head;
 
-        while(fast.next!= null && fast.next.next != null){
+        while(fast!= null && fast.next != null){
             // fast 指针先移动一步
             fast = fast.next.next;
             slow = slow.next;
@@ -240,11 +239,11 @@ public class MyLinkedListNode {
                 // 定义相遇节点
                 LinkedNode contactNode = fast;
                 // 定义节点重新指向头节点
-                LinkedNode headNode = virtualNode.next;
+                LinkedNode headNode = head;
                 // 当两个节点再次相遇的时候一定是入口节点
                 while (contactNode != headNode){
                     contactNode = contactNode.next;
-                    headNode = head.next;
+                    headNode = headNode.next;
                 }
                 virtualNode.next = headNode;
                 return virtualNode;
