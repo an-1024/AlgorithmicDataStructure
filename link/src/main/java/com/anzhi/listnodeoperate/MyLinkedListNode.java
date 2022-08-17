@@ -260,16 +260,51 @@ public class MyLinkedListNode {
      * @param headB
      * @return
      */
-    public ListNode getIntersectionNode(LinkedNode headA, LinkedNode headB) {
+    public LinkedNode getIntersectionNode(LinkedNode headA, LinkedNode headB) {
         LinkedNode currNodeA = headA;
         LinkedNode currNodeB = headB;
 
-        int length
+        int lengthA = 0;
+        int lengthB = 0;
 
         // 计算两个链表的长度
         while(currNodeA != null){
-
+            lengthA++;
+            currNodeA = currNodeA.next;
         }
-        return
+
+        while(currNodeB !=null){
+            lengthB++;
+            currNodeB = currNodeB.next;
+        }
+
+        currNodeA = headA;
+        currNodeB = headB;
+        // 让 currNode 为最长链表的头，lengthA 为其长度
+        if (lengthB > lengthA){
+            int tmpLength = lengthA;
+            lengthA = lengthB;
+            lengthB = lengthA;
+            LinkedNode tmpNode = currNodeA;
+            currNodeA = currNodeB;
+            currNodeB = tmpNode;
+        }
+
+        // 求长度差：
+        int gap = lengthA -lengthB;
+        // 两个链表对齐
+        while (gap-- > 0){
+            currNodeA = currNodeA.next;
+        }
+
+        // 当 currNodeA 和 currNodeB 相等时返回
+        while (currNodeA != null){
+            if(currNodeA == currNodeB){
+                return currNodeA;
+            }
+            currNodeA = currNodeA.next;
+            currNodeB = currNodeB.next;
+        }
+        return  null;
     }
 }
