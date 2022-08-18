@@ -284,7 +284,7 @@ public class MyLinkedListNode {
         if (lengthB > lengthA){
             int tmpLength = lengthA;
             lengthA = lengthB;
-            lengthB = lengthA;
+            lengthB = tmpLength;
             LinkedNode tmpNode = currNodeA;
             currNodeA = currNodeB;
             currNodeB = tmpNode;
