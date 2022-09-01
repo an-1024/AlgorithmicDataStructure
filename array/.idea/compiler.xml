@@ -8,10 +8,12 @@
         <outputRelativeToContentRoot value="true" />
         <module name="link" />
         <module name="array" />
+        <module name="hash" />
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
       <module name="array" target="11" />
+      <module name="hash" target="11" />
       <module name="link" target="11" />
     </bytecodeTargetLevel>
   </component>
