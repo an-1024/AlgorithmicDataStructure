@@ -13,7 +13,7 @@ public class LongestPalindromicSubstring {
             return s;
         }
 
-        int maxLen = 1;
+        int maxLen = 0;
         // 开始截取字符串长度的位置
         int begin = 0;
 
