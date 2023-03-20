@@ -14,6 +14,7 @@ public class LongestPalindromicSubstring {
         }
 
         int maxLen = 1;
+        // 开始截取字符串长度的位置
         int begin = 0;
 
         char[] charArray = s.toCharArray();
@@ -54,7 +55,7 @@ public class LongestPalindromicSubstring {
     }
 
     public static void main(String[] args) {
-        String strTarget = "aa";
+        String strTarget = "aaba";
         LongestPalindromicSubstring longestPalindromicSubstring = new LongestPalindromicSubstring();
         String result = longestPalindromicSubstring.longestPalindrome(strTarget);
         System.out.println(result);
