@@ -7,7 +7,7 @@ public class ContainerWithMostWater {
     public int maxArea(int[] height) {
         int masArea = 0, l = 0, r = height.length - 1;
         while (l < r) {
-            // 最短垂线决定面积大小 Math.min(height[l], height[r]) * (r - l)
+            // 短垂线决定面积大小 Math.min(height[l], height[r]) * (r - l)
             masArea = Math.max(masArea, Math.min(height[l], height[r]) * (r - l));
             // 根据左右指针大小，决定移动那个指针
             if (height[l] <= height[r]) {
