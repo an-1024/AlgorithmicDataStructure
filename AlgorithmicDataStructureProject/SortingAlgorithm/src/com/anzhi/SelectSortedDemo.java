@@ -1,5 +1,7 @@
 package com.anzhi;
 
+import com.anzhi.util.SortArrUtil;
+
 /**
  * 编写一个选择排序demo
  */
@@ -9,11 +11,11 @@ public class SelectSortedDemo {
         // 创建一个数组
         int[] arr = new int[]{7, 0, 8, 9, 1, 4, 5, 1};
         // 打印排序之前的数组
-        printArr(arr);
+        SortArrUtil.printArr(arr);
         // 对数组进行排序
         selectSortArr(arr);
         // 打印排序之后的数组
-        printArr(arr);
+        SortArrUtil.printArr(arr);
     }
 
     // 对数组进行排序
@@ -40,20 +42,9 @@ public class SelectSortedDemo {
                 minNumIndex = arr[j] < arr[minNumIndex] ? j : minNumIndex;
             }
             // 找到最最小值之后要进行数据交换
-            swapData(arr, i, minNumIndex);
+            SortArrUtil.swapData(arr, i, minNumIndex);
         }
     }
 
-    private static void swapData(int[] arr, int j, int minNumIndex) {
-        int tmp = arr[minNumIndex];
-        arr[minNumIndex] = arr[j];
-        arr[j] = tmp;
-    }
 
-    private static void printArr(int[] arr) {
-        for (int i=0; i<arr.length; i++) {
-            System.out.print(arr[i] + " ");
-        }
-        System.out.println();
-    }
 }
