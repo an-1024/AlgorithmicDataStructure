@@ -19,7 +19,7 @@ public class SelectSortedDemo {
     }
 
     // 对数组进行排序
-    private static void selectSortArr(int[] arr) {
+    public static void selectSortArr(int[] arr) {
         // 考虑边界调节，不用排序直接返回
         if (arr == null || arr.length < 2) {
             return ;

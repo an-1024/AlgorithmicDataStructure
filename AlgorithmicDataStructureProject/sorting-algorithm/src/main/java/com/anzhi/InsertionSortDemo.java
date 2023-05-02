@@ -42,7 +42,7 @@ public class InsertionSortDemo {
     }
 
 
-    private static void insertionSort2(int[] arr) {
+    public static void insertionSort2(int[] arr) {
         // 以下情况，不用排序直接返回
         if (arr == null || arr.length < 2) {
             return ;

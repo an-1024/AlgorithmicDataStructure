@@ -12,6 +12,7 @@
         <module>data-structure</module>
         <module>print-int-binary</module>
         <module>sorting-algorithm</module>
+        <module>dichotomy</module>
     </modules>
 
     <properties>
