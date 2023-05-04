@@ -271,7 +271,7 @@ public class DichotomyDemo {
         return arr;
     }
 
-    // 校验二分查找找到的
+    // 校验二分查找找到的局部最小值
     private static boolean checkLocalMinNum(int[] arr, int midIndex) {
         if (arr.length == 0) {
             return midIndex == -1;
