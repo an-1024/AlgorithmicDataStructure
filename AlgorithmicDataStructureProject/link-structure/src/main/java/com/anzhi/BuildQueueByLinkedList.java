@@ -1,5 +1,8 @@
 package com.anzhi;
 
+import java.util.LinkedList;
+import java.util.Queue;
+
 /**
  * 用链表实现一个队列
  */
@@ -68,5 +71,65 @@ public class BuildQueueByLinkedList {
             }
             return ans;
         }
+    }
+    
+    public static void testMyQueue () {
+        MyQueue<Integer> myQueueTest = new MyQueue<>();
+        Queue<Integer> queueJdk = new LinkedList<>();
+        
+        int testTime = 5000000;
+        int maxValue = 200000000;
+
+        System.out.println("测试开始");
+        for (int i=0; i<testTime; i++) {
+            if (myQueueTest.isEmpty() != queueJdk.isEmpty()) {
+                System.out.println("queue Oops!");
+            }
+            if (myQueueTest.size() != queueJdk.size()) {
+                System.out.println("size Oops");
+            }
+            
+            double decide = Math.random();
+            if (decide < 0.33) {
+                int num = (int) (Math.random() * maxValue);
+                myQueueTest.offer(num);
+                queueJdk.offer(num);
+            } else if (decide < 0.66) {
+                if (!myQueueTest.isEmpty()) {
+                    int myQueuePollInteger = myQueueTest.poll();
+                    int queueJdkPollInteger = queueJdk.poll();
+                    
+                    if (myQueuePollInteger != queueJdkPollInteger) {
+                        System.out.println("poll num Oops!");
+                    }
+                }
+            } else {
+                if (!myQueueTest.isEmpty()) {
+                    int muQueuePeekInteger = myQueueTest.peek();
+                    int queueKdkPeekInteger = queueJdk.peek();
+                    
+                    if (muQueuePeekInteger != queueKdkPeekInteger) {
+                        System.out.println("peek num Oops!");
+                    }
+                }
+            }
+            if (myQueueTest.size() != queueJdk.size()) {
+                System.out.println("size Oops");
+            }
+            
+            while (!myQueueTest.isEmpty()) {
+                int myQueuePollInteger = myQueueTest.poll();
+                int queueJdkPollInteger = queueJdk.poll();
+
+                if (myQueuePollInteger != queueJdkPollInteger) {
+                    System.out.println("poll num Oops!");
+                }
+            }
+        }
+        System.out.println("测试结束");
+    }
+
+    public static void main(String[] args) {
+        testMyQueue();
     }
 }
