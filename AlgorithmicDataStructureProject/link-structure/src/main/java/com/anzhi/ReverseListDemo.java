@@ -110,6 +110,4 @@ public class ReverseListDemo {
         }
         System.out.println();
     }
-    
-    
 }
