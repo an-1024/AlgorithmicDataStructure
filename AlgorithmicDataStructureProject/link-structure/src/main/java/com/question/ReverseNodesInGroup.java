@@ -17,6 +17,7 @@ public class ReverseNodesInGroup {
             return head;
         }
         // 第一组节点找到, 让头节点指向第一组的尾节点
+        // 也就意味着找到组内翻转节点的头节点
         head = end;
         revers(start, end);
         // 上一组的尾节点
