@@ -25,8 +25,11 @@ public class TwoLinkListSum {
         ListNode l = len1 >= len2 ? head1 : head2;
         ListNode s = l == head1 ? head2 : head1;
         
+        // 长链表
         ListNode curL = l;
+        // 短链表
         ListNode curS = s;
+        // 记录最后节点位置，以便进位扩充节点
         ListNode last = curL;
         
         // 进位标志
